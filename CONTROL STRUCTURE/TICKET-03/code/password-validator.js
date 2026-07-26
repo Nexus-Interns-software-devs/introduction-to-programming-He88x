@@ -12,4 +12,4 @@ if(length >= 8 && hasUpperCase && number){
     console.log("Missing: Length (need 8+), Number, Uppercase Letter.")
 }
 
-//passed all edge cases and tested with different passwords.
+//Tested with different passwords and passed all the conditions. The password "pass123" is invalid because it does not meet the length requirement and does not contain an uppercase letter.

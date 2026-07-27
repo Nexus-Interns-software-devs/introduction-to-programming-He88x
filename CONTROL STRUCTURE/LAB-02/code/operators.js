@@ -23,6 +23,7 @@ console.log(`Is Greater: ${a > b}`);
 console.log(`Is Less: ${a < b}`);
 console.log(`Is Not Equal: ${a !== b}`);
 console.log(`Both True: ${a > b && b < a}`);
+console.log(`Change True to False: ${! (a > b)}`);
 
 //Using Logical Operations
 let num1 = 10;

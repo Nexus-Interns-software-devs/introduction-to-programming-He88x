@@ -32,4 +32,4 @@ console.log(`FOR OR: ${num1 > 5 || num2 < 10}`);
 //Log for the boolean results
 console.log(`Both False: ${num1 < 5 && num2 > 30}`);
 console.log(`Either True: ${num1 > 5 || num2 < 30}`);
-console.log(`Change True to False: ${! (a > b)}`);
+console.log(`Change True to False: ${! (num1 > num2)}`);

@@ -23,7 +23,6 @@ console.log(`Is Greater: ${a > b}`);
 console.log(`Is Less: ${a < b}`);
 console.log(`Is Not Equal: ${a !== b}`);
 console.log(`Both True: ${a > b && b < a}`);
-console.log(`Change True to False: ${! (a > b)}`);
 
 //Using Logical Operations
 let num1 = 10;
@@ -33,3 +32,4 @@ console.log(`FOR OR: ${num1 > 5 || num2 < 10}`);
 //Log for the boolean results
 console.log(`Both False: ${num1 < 5 && num2 > 30}`);
 console.log(`Either True: ${num1 > 5 || num2 < 30}`);
+console.log(`Change True to False: ${! (a > b)}`);

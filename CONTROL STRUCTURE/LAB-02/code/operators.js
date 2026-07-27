@@ -20,6 +20,8 @@ let a = 20;
 let b = 10;
 console.log(`Is Equal: ${a === b}`);
 console.log(`Is Greater: ${a > b}`);
+console.log(`Is Less: ${a < b}`);
+console.log(`Is Not Equal: ${a !== b}`);
 console.log(`Both True: ${a > b && b < a}`);
 
 //Using Logical Operations

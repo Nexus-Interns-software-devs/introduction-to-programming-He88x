@@ -77,11 +77,20 @@ function handleMenuChoice(choice) {
  * Add a new contact
  * TODO: Implement this function
  */
-function addContact() {
+function addContact(name, email, phone) {
   // Get name, email, phone from user
-  // Create contact object with id
-  // Add to contacts array
-  // Increment nextId
+  readline.question("Enter name: ", (name) => {
+    readline.question("Enter email: ", (email) => {
+      readline.question("Enter phone: ", (phone) => {
+        // Create contact object with id
+        const contact = { id: nextId++, name, email, phone };
+        // Add to contacts array
+        contacts.push(contact);
+        console.log("Contact added!");
+        showMenu();
+      });
+    });
+  });
 }
 
 /**
@@ -90,7 +99,15 @@ function addContact() {
  */
 function viewContacts() {
   // Check if contacts array is empty
-  // Loop through and display each contact
+  if (contacts.length === 0) {
+    console.log("No contacts to display.");
+  } else {
+    console.log("\n=== ALL CONTACTS ===");
+    contacts.forEach(contact => {
+      console.log(`ID: ${contact.id}, Name: ${contact.name}, Email: ${contact.email}, Phone: ${contact.phone}`);
+    });
+  }
+  showMenu();
 }
 
 /**
@@ -99,8 +116,22 @@ function viewContacts() {
  */
 function searchContacts() {
   // Get search query from user
-  // Filter contacts (case-insensitive)
-  // Display results
+  readline.question("Enter name to search: ", (query) => {
+    // Filter contacts (case-insensitive)
+    const results = contacts.filter(contact => 
+      contact.name.toLowerCase().includes(query.toLowerCase())
+    );
+    // Display results
+    if (results.length === 0) {
+      console.log("No contacts found.");
+    } else {
+      console.log("\n=== SEARCH RESULTS ===");
+      results.forEach(contact => {
+        console.log(`ID: ${contact.id}, Name: ${contact.name}, Email: ${contact.email}, Phone: ${contact.phone}`);
+      });
+    }
+    showMenu();
+  });
 }
 
 /**
@@ -109,9 +140,28 @@ function searchContacts() {
  */
 function updateContact() {
   // Get contact ID
-  // Find contact
-  // Get new values
-  // Update contact
+  readline.question("Enter contact ID to update: ", (id) => {
+    // Find contact
+    const contactIndex = contacts.findIndex(contact => contact.id === parseInt(id));
+    if (contactIndex === -1) {
+      console.log("Contact not found.");
+      showMenu();
+      return;
+    }
+    // Get new values
+    readline.question("Enter new name (or press Enter to keep current): ", (name) => {
+      readline.question("Enter new email (or press Enter to keep current): ", (email) => {
+        readline.question("Enter new phone (or press Enter to keep current): ", (phone) => {
+          // Update contact
+          if (name) contacts[contactIndex].name = name;
+          if (email) contacts[contactIndex].email = email;
+          if (phone) contacts[contactIndex].phone = phone;
+          console.log("Contact updated!");
+          showMenu();
+        });
+      });
+    });
+  });
 }
 
 /**
@@ -120,8 +170,17 @@ function updateContact() {
  */
 function deleteContact() {
   // Get contact ID
-  // Find and remove contact
-  // Confirm deletion
+  readline.question("Enter contact ID to delete: ", (id) => {
+    // Find and remove contact
+    const contactIndex = contacts.findIndex(contact => contact.id === parseInt(id));
+    if (contactIndex === -1) {
+      console.log("Contact not found.");
+    } else {
+      contacts.splice(contactIndex, 1);
+      console.log("Contact deleted!");
+    }
+    showMenu();
+  });
 }
 
 // Start the app
